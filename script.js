@@ -1,19 +1,32 @@
 const arrow = document.querySelector('.arrow');
 
-// Function to handle device orientation
-function handleOrientation(event) {
-    const alpha = event.alpha; // Compass heading in degrees (0° = North)
+// Ask for permission (iOS 13+)
+function requestOrientationPermission() {
+    if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission()
+            .then(permissionState => {
+                if (permissionState === 'granted') {
+                    window.addEventListener('deviceorientation', handleOrientation, true);
+                } else {
+                    alert('Permission denied');
+                }
+            })
+            .catch(console.error);
+    } else {
+        // Android or older iOS versions
+        window.addEventListener('deviceorientation', handleOrientation, true);
+    }
+}
 
-    if (alpha !== null) {
-        // Rotate the arrow to point north (or toward Qibla if you add a direction offset)
+// Handle compass movement
+function handleOrientation(event) {
+    const alpha = event.alpha;
+    if (alpha != null) {
+        // Rotate arrow to face North
         const rotation = 360 - alpha;
         arrow.style.transform = `rotate(${rotation}deg)`;
     }
 }
 
-// Check if device orientation is supported
-if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', handleOrientation, true);
-} else {
-    alert("Your device doesn't support orientation events.");
-}
+// Wait for user to click anywhere to ask for permission
+document.body.addEventListener('click', requestOrientationPermission);
