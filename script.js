@@ -22,7 +22,7 @@ function requestOrientationPermission() {
 function handleOrientation(event) {
     const alpha = event.alpha;
     if (alpha != null) {
-        // Rotate arrow to face North
+        console.log("alpha:", alpha);
         const rotation = 360 - alpha;
         arrow.style.transform = `rotate(${rotation}deg)`;
     }
