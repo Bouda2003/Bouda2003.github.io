@@ -22,11 +22,11 @@ function requestOrientationPermission() {
 function handleOrientation(event) {
     const alpha = event.alpha;
     if (alpha != null) {
-        console.log("alpha:", alpha);
-        const rotation = 360 - alpha;
-        arrow.style.transform = `rotate(${rotation}deg)`;
+        const compassCircle = document.querySelector('.compass-circle');
+        compassCircle.style.transform = `translate(-50%, -50%) rotate(${-alpha}deg)`;
     }
 }
+
 
 // Wait for user to click anywhere to ask for permission
 document.body.addEventListener('click', requestOrientationPermission);
