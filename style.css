@@ -15,11 +15,9 @@ body {
 
 .compass > .arrow {
   position: absolute;
-  width: 0;
-  height: 0;
   top: -20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* ONLY this */
   border-style: solid;
   border-width: 30px 20px 0 20px;
   border-color: red transparent transparent transparent;
@@ -27,7 +25,17 @@ body {
 }
 
 .compass > .compass-circle {
-  transform-origin: center center;
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center; /* important */
+  transition: transform 0.1s ease-out; /* optional smoothness */
+  background: url(https://purepng.com/public/uploads/large/purepng.com-compasscompassinstrumentnavigationcardinal-directionspointsdiagram-1701527842316onq7x.png)
+    center no-repeat;
+  background-size: contain;
 }
 
 
