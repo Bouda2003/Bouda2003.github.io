@@ -26,6 +26,11 @@ body {
   z-index: 1;
 }
 
+.compass > .compass-circle {
+  transform-origin: center center;
+}
+
+
 .compass > .compass-circle,
 .compass > .my-point {
   position: absolute;
