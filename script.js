@@ -27,9 +27,7 @@ function handleOrientation(event) {
             compassCircle.style.transform = `translate(-50%, -50%) rotate(${alpha}deg)`;
         });
     }
-}}
-
-
+}
 
 // Wait for user to click anywhere to ask for permission
 document.body.addEventListener('click', requestOrientationPermission);
