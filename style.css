@@ -13,6 +13,10 @@ body {
   margin: auto;
 }
 
+.arrow {
+  transform-origin: bottom center;
+}
+
 .compass > .arrow {
   position: absolute;
   top: -20px;
