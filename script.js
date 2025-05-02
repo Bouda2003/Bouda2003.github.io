@@ -25,7 +25,7 @@ function handleOrientation(event) {
         const compassCircle = document.querySelector('.compass-circle');
         compassCircle.style.transform = translate(-50%, -50%) rotate(${-alpha}deg);
         requestAnimationFrame(() => {
-            compassCircle.style.transform = translate(-50%, -50%) rotate(${-alpha}deg);
+             compassCircle.style.transform = `translate(-50%, -50%) rotate(${-alpha}deg)`;
         });
     }
 }
