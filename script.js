@@ -1,7 +1,8 @@
 const arrow = document.querySelector('.arrow');
 const compassCircle = document.querySelector('.compass-circle');
 
-const qiblaDirection = 135; // Replace with your actual Qibla direction
+// Replace with your actual Qibla direction (example: 135° = southeast)
+const qiblaDirection = 135;
 
 function requestOrientationPermission() {
     if (typeof DeviceOrientationEvent?.requestPermission === 'function') {
@@ -22,15 +23,12 @@ function requestOrientationPermission() {
 function handleOrientation(event) {
     const alpha = event.alpha;
     if (alpha != null) {
-        // Rotate compass background to match phone orientation
         const compassRotation = -alpha;
-
-        // Arrow should point toward Qibla (adjusted for phone heading)
         const arrowRotation = qiblaDirection - alpha;
 
         requestAnimationFrame(() => {
-            compassCircle.style.transform = `translate(-50%, -50%) rotate(${compassRotation}deg)`;
-            arrow.style.transform = `translateX(-50%) rotate(${arrowRotation}deg)`;
+            compassCircle.style.transform = `rotate(${compassRotation}deg)`;
+            arrow.style.transform = `rotate(${arrowRotation}deg) translate(-50%, 50%)`;
         });
     }
 }
